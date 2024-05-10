@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Al-Faris</title>
+
     <style>
         html, body {
             height: 100%;
@@ -17,13 +19,14 @@
             line-height: 1.25;
         }
         header {
-            margin-top: 10px; 
+            margin-top: 10px;
             text-align: center;
             width: 100%; /* Full width */
         }
         table {
-            width: 60%;
-            margin: 20px 0; 
+            width: 100%; /* Make table width responsive */
+            max-width: 800px; /* Maximum width to maintain readability */
+            margin: 20px 0;
             border-collapse: collapse;
         }
         th, td {
@@ -42,8 +45,29 @@
             background-color: #b0a9d6;
             color: white;
         }
+        /* Media query for devices with a max-width of 600px */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px; /* Add padding on smaller screens for better edge spacing */
+            }
+            header {
+                margin-top: 5px; /* Reduce margin top on smaller screens */
+                padding: 0 5px; /* Add padding to keep text from touching the edges */
+            }
+            table {
+                width: 100%; /* Table should take full width on smaller screens */
+            }
+            th, td {
+                padding: 8px; /* Slightly reduce padding in table cells on smaller screens */
+            }
+            th, td {
+                font-size: 0.9rem; /* Smaller font size for table headers and cells on smaller screens */
+            }
+        }
     </style>
+    
 </head>
+
 <body>
     <header>
         <h1>FARIS ALQUADDOOMI</h1>
