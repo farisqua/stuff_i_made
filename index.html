@@ -3,29 +3,34 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Resume Al-Faris</title>
 
     <style>
         html, body {
-            height: 100%;
             margin: 0;
             padding: 0;
+            width: 100%;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-around;
+            justify-content: flex-start;
             font-family: Arial, sans-serif;
             line-height: 1.25;
+            min-height: 100vh;
+        }
+        body {
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
         }
         header {
             margin-top: 10px;
             text-align: center;
-            width: 100%; /* Full width */
+            width: 100%;
         }
         table {
-            width: 100%; /* Make table width responsive */
-            max-width: 800px; /* Maximum width to maintain readability */
+            width: 60%;
             margin: 20px 0;
             border-collapse: collapse;
         }
@@ -45,23 +50,22 @@
             background-color: #b0a9d6;
             color: white;
         }
-        /* Media query for devices with a max-width of 600px */
         @media (max-width: 600px) {
             body {
-                padding: 10px; /* Add padding on smaller screens for better edge spacing */
+                padding: 10px;
             }
             header {
-                margin-top: 5px; /* Reduce margin top on smaller screens */
-                padding: 0 5px; /* Add padding to keep text from touching the edges */
+                margin-top: 5px;
+                padding: 0 5px;
             }
             table {
-                width: 100%; /* Table should take full width on smaller screens */
+                width: 100%;
             }
             th, td {
-                padding: 8px; /* Slightly reduce padding in table cells on smaller screens */
+                padding: 8px;
             }
             th, td {
-                font-size: 0.9rem; /* Smaller font size for table headers and cells on smaller screens */
+                font-size: 0.9rem;
             }
         }
     </style>
