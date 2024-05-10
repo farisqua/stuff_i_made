@@ -67,6 +67,74 @@
                 font-size: 0.9rem;
             }
         }
+        nav {
+            margin-right:120px;
+        }
+        .verticalNav {
+            width : 40px;
+            position:fixed;
+            height:100vh;
+            top:0;
+            right:0;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            line-height:40px;
+            text-transform : uppercase;
+            cursor:pointer;
+            transition : all 300ms ease-in;
+            border-right : 2px solid #232323
+        }
+        
+        .verticalNav:hover {
+            width : 100%;
+            writing-mode: unset;
+            text-orientation: sideways;
+        }
+        
+        .verticalNav:hover .navContent {
+            margin-left:120px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height:100vh
+        }
+        .navContent p{
+            line-height:1.2em
+        }
+        .navContent,
+        .verticalNav:hover .siteNavLabel  {
+            display: none;
+        }
+        .subNavMenu {
+            font-size:6em;
+            line-height:1em;
+            color: #fff;
+        }
+        
+        .verticalNav:nth-child(1){
+            right:80px;
+            background: #4adfff;
+        }
+        .verticalNav:nth-child(2){
+            right:40px;
+            background: #faf7f8;
+        }
+        .verticalNav:nth-child(3){
+            right:0px;
+            background: #761adc;
+        }
+        .hideToggle nav {
+            margin-right:0px;
+        }
+        .hideToggle .verticalNav {
+            display:none
+        }
+        #toggleRightMenu {
+            cursor : pointer
+        }
+        .hideToggle #toggleRightMenu {
+            transform : rotate(180deg)
+        }
     </style>
     
 </head>
@@ -376,6 +444,107 @@
         </tbody>
     </table>
 
+    <!-- NAV BAR: WIP -->
+    <div id="navWrap">
+    <nav class="navbar navbar-expand-md p-3">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="/static_files/images/dbook_black.png" alt="demo dbook logo" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="ms-auto">
+          <i class="fas fa-arrow-right" id="toggleRightMenu"></i>
+        </div>
+      </div>
+    </nav>
+    <div id="verticalNavWrap">
+      <div class='verticalNav'>
+        <div class="siteNavLabel  text-center">About Us</div>
+        <div class="navContent">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col">
+                <h2 class="jumboHeading">About Us</h2>
+                <p class="pt-4 ps-4 pe-4">
+                  A mobile app to register users's entry exit. Designed and developed by Siva Kishore G.
+                </p>
+                <div class="ms-4">
+                  <button class="btn btn-info">Download now</button>
+                </div>
+              </div>
+              <div class="col">
+                <div><a href="#" class="subNavMenu">Blog</a></div>
+                <div><a href="#" class="subNavMenu">Contact Us</a></div>
+                <div><a href="#" class="subNavMenu">Subscribe</a></div>
+                <div><a href="#" class="subNavMenu">Partners</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='verticalNav'>
+        <div class="siteNavLabel text-center">Pricing</div>
+        <div class="navContent">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col">
+                <h2 class="jumboHeading">Pricing</h2>
+                <p class="p-4">
+                  Create upto 5 locations and 30 days of backup for free users.
+                </p>
+              </div>
+              <div class="col">
+                <div class="card text-center" style="width: 18rem;">
+                  <div class="card-header bg-info">PREMIUM</div>
+                  <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <ul class="card-text list-unstyled">
+                      <li>Upto 20 Locations</li>
+                      <li>1 Year Data</li>
+                      <li>Separate App</li>
+                      <li>Zero Ads</li>
+                      <li>Unlimited popups</li>
+                    </ul>
+                  </div>
+                  <div class="card-footer bg-dark text-white">2000 INR</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='verticalNav text-center text-white'>
+        <div class="siteNavLabel">Services</div>
+        <div class="navContent">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-7 mx-auto">
+                <h2 class="jumboHeading">Services</h2>
+                <p class="p-4">
+                  Servicing apartments, restaurants, hotels &amp; businesses
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- JAVASCRIP TO NAV BAR -->
+    <script>
+        var trm = document.getElementById('toggleRightMenu');
+        var navWrap = document.getElementById('navWrap');
+        trm.onclick = function() {
+            if (navWrap.className === 'hideToggle') {
+                navWrap.className = '';
+            } else {
+                navWrap.className = 'hideToggle';
+            }
+        };
+    </script>
 
 </body>
 </html>
