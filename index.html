@@ -86,6 +86,12 @@
             width: 100%;
         }
 
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
         /* Horizontal Line Adjustments */
 
         hr {
@@ -197,8 +203,8 @@
 
         .checkbox-wrapper-2 {
             display: flex;
-            justify-content: center; /* Centers content horizontally */
-            align-items: center; /* Centers content vertically */
+            justify-content: center;
+            align-items: center;
         }
 
     </style>
@@ -221,18 +227,16 @@
                     <a class="nav-item nav-link" href="#">Pricing</a>
                     <a class="nav-item nav-link disabled" href="#">Disabled</a>
                 </div>
+                <!-- Night Mode Toggle -->
+                <div class="checkbox-wrapper-2 ml-auto"> <!-- ml-auto will push it to the right -->
+                    <label for="night-mode-checkbox">
+                        <img src="day_night.png" alt="Night Mode" style="width: 50px; height: auto;">
+                    </label>
+                    <input type="checkbox" class="sc-gJwTLC ikxBAC" id="night-mode-checkbox">
+                </div>
             </div>
-
-            <!-- Night Mode Toggle -->
-            <div class="checkbox-wrapper-2">
-                <label for="night-mode-checkbox">
-                    <img src="day_night.png" alt="Night Mode" style="width: 50px; height: auto;">
-                </label>
-                <input type="checkbox" class="sc-gJwTLC ikxBAC" id="night-mode-checkbox">
-            </div>
-
         </div>
-    </nav>
+    </nav>    
 
     <!-- Resume Text Body -->
     <header>
