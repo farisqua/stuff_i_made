@@ -16,68 +16,6 @@
     <title>Resume Al-Faris</title>
 
     <style>
-
-        /* Tables and Content Formatting */
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            font-family: Arial, sans-serif;
-            line-height: 1.25;
-            min-height: 100vh;
-        }
-        body {
-            padding-top: env(safe-area-inset-top);
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-        header {
-            margin-top: 10px;
-            text-align: center;
-            width: 100%;
-        }
-        table {
-            width: 60%;
-            margin: 20px 0;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 12px;
-            vertical-align: middle;
-        }
-        tr:nth-child(even) {
-            background-color: rgb(245, 245, 245);
-        }
-        tr:hover {
-            background-color: rgb(225, 245, 245);
-        }
-        th {
-            background-color: rgb(245, 245, 245);
-            color: white;
-        }
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            header {
-                margin-top: 5px;
-                padding: 0 5px;
-            }
-            table {
-                width: 100%;
-            }
-            th, td {
-                padding: 8px;
-            }
-            th, td {
-                font-size: 0.9rem;
-            }
-        }
         
         /* Nav Bar Adjustments */
 
@@ -90,20 +28,6 @@
             display: flex;
             align-items: center;
             width: 100%;
-        }
-
-        /* Horizontal Line Adjustments */
-
-        hr {
-            width: 60%;
-            border: 1px solid #c6ccd6;
-            margin: 0px auto 5px auto;
-        }
-
-        @media (max-width: 600px) {
-            hr {
-                width: 100%;
-            }
         }
 
         /* Night Mode */
@@ -124,16 +48,6 @@
         body.night-mode {
             background-color: var(--bg-color-night);
             color: var(--text-color-night);
-        }
-        body.night-mode table {
-        }
-
-        body.night-mode table tr:nth-child(even) {
-            background-color: #444;
-        }
-
-        body.night-mode table tr:hover {
-            background-color: #333;
         }
 
         /* Toggle Button */

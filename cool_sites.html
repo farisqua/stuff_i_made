@@ -17,68 +17,6 @@
 
     <style>
 
-        /* Tables and Content Formatting */
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            font-family: Arial, sans-serif;
-            line-height: 1.25;
-            min-height: 100vh;
-        }
-        body {
-            padding-top: env(safe-area-inset-top);
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-        header {
-            margin-top: 10px;
-            text-align: center;
-            width: 100%;
-        }
-        table {
-            width: 60%;
-            margin: 20px 0;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 12px;
-            vertical-align: middle;
-        }
-        tr:nth-child(even) {
-            background-color: rgb(245, 245, 245);
-        }
-        tr:hover {
-            background-color: rgb(225, 245, 245);
-        }
-        th {
-            background-color: rgb(245, 245, 245);
-            color: white;
-        }
-        @media (max-width: 600px) {
-            body {
-                padding: 10px;
-            }
-            header {
-                margin-top: 5px;
-                padding: 0 5px;
-            }
-            table {
-                width: 100%;
-            }
-            th, td {
-                padding: 8px;
-            }
-            th, td {
-                font-size: 0.9rem;
-            }
-        }
-        
         /* Nav Bar Adjustments */
 
         nav.navbar {
@@ -90,20 +28,6 @@
             display: flex;
             align-items: center;
             width: 100%;
-        }
-
-        /* Horizontal Line Adjustments */
-
-        hr {
-            width: 60%;
-            border: 1px solid #c6ccd6;
-            margin: 0px auto 5px auto;
-        }
-
-        @media (max-width: 600px) {
-            hr {
-                width: 100%;
-            }
         }
 
         /* Night Mode */
@@ -124,16 +48,6 @@
         body.night-mode {
             background-color: var(--bg-color-night);
             color: var(--text-color-night);
-        }
-        body.night-mode table {
-        }
-
-        body.night-mode table tr:nth-child(even) {
-            background-color: #444;
-        }
-
-        body.night-mode table tr:hover {
-            background-color: #333;
         }
 
         /* Toggle Button */
@@ -207,6 +121,23 @@
             align-items: center;
         }
 
+        /* Word Sphere */
+
+        .word_sphere {
+            max-width: fit-content;
+            margin-inline: auto;
+        }
+
+        .word_sphere h3 {
+            max-width: fit-content;
+            margin-inline: auto;
+        }
+
+        canvas {
+            width: 100%;
+            height: auto;
+        }
+
     </style>
     
 </head>
@@ -238,7 +169,12 @@
     </nav>    
 
     <!-- Text Body -->
-    <h4> ~Cool sites being found~ <3 </h4>
+
+    <div class="word_sphere">
+        <br>
+        <h3><span style="color: red;">Youtube</span> Channels</h3>
+        <canvas id="canvas"></canvas>
+    </div>
 
     <!-- Night Mode -->
     <script>
@@ -250,6 +186,148 @@
             });
         });
     </script>
-    
+
+    <!-- Word Cloud -->
+    <script>
+        
+        const canvas = document.getElementById('canvas');
+        
+
+        const texts = [
+          'Asianometry', 'bycloud', 'hoser', "Let's Talk Religion", 'History with Cy', 'Johnny Harris', 'Fireship'
+        ];
+
+        const counts = [1,2,4,5,4,2,1];
+        
+        const options = {
+          tilt: Math.PI / 9,
+          initialVelocityX: 0.09,
+          initialVelocityY: 0.09,
+          initialRotationX: Math.PI * 0.14,
+          initialRotationZ: 0
+        };
+        
+        wordSphere(canvas, texts, counts, options);
+         
+        function wordSphere(canvas, texts, counts, options) {
+          const π = Math.PI;
+          const {
+            width = 850,
+            height = 750,
+            radius = 300,
+            padding = 50,
+            fontSize = 14,
+            tilt = 0,
+            initialVelocityX = 0,
+            initialVelocityY = 0,
+            initialRotationX = 0,
+            initialRotationZ = 0,
+          } = options;
+          
+          let vx = initialVelocityX, vy = initialVelocityY;
+          let rx = initialRotationX, rz = initialRotationZ;
+          
+          // canvas setup
+          let ctx = canvas.getContext('2d'); 
+          ctx.textAlign = 'center';
+          
+          // Hi-DPI support
+          canvas.width = width * 2;
+          canvas.height = height * 2;
+          canvas.style.width = `${width}px`;
+          canvas.style.height = `${height}px`;
+          ctx.scale(2,2);
+        
+          // scrolling
+          let clicked = false, lastX, lastY;
+          canvas.addEventListener('mousedown', event => {
+            clicked = true;
+            lastX = event.screenX;
+            lastY = event.screenY;
+          });
+          canvas.addEventListener('mousemove', event => {
+            if (!clicked) return;
+            [dx, dy] = [event.screenX - lastX, event.screenY - lastY];
+            [lastX, lastY] = [event.screenX, event.screenY];
+        
+            // rotation update
+            rz += -dy * 0.01;
+            rx += dx * 0.01;
+        
+            // velocity update
+            vx = dx * 0.1;
+            vy = dy * 0.1;
+        
+            if (!looping) startLoop();
+          });
+          canvas.addEventListener('mouseup', e => clicked = false);
+          canvas.addEventListener('mouseleave', e => clicked = false);
+          
+          function rot(x,y,t) {
+            return [x*Math.cos(t)-y*Math.sin(t), x*Math.sin(t)+y*Math.cos(t)];
+          }
+        
+          function render() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+            let ix = 0, iz = 0, i = 1;
+            for (const text of texts) {
+              const degZ = (π/(counts.length-1)) * iz;
+              const degX = (2*π/counts[iz]) * ix;
+        
+              let x = radius * Math.sin(degZ) * Math.cos(degX);
+              let y = radius * Math.sin(degZ) * Math.sin(degX); 
+              let z = radius * Math.cos(degZ) + 8*(ix % 2) /* randomness */;
+        
+              // camera transform
+              [y,z] = rot(y, z, tilt);
+              [x,z] = rot(x, z, rz);
+              [x,y] = rot(x, y, rx);
+        
+              // convert to cartesian and then draw.
+              const alpha = 0.6 + 0.4 * (x/radius);
+              const size = fontSize + 2 + 5*(x/radius);
+              ctx.fillStyle = `rgba(0,0,0,${alpha})`;
+              ctx.font = `${size}px "Helvetica Neue", sans-serif`;
+              ctx.fillText(text, y + width/2, -z + height/2);
+        
+              ix--;
+              if (ix < 0) {
+                iz++;
+                ix = counts[iz] - 1;
+              }
+              i++;
+            }
+          }
+        
+          // renderer
+          let looping = false;
+          function rendererLoop() {
+            if (looping) window.requestAnimationFrame(rendererLoop);
+            render();
+            
+            // deacceleration
+            if (vx > 0) vx = vx - 0.01;
+            if (vy > 0) vy = vy - 0.01;
+            if (vx < 0) vx = vx + 0.01;
+            if (vy > 0) vy = vy + 0.01;
+            if (vx == 0 && vy == 0) stopLoop();
+            
+            rz += vy * 0.01;
+            rx += vx * 0.01;
+          }
+        
+          function startLoop() {
+            looping = true;
+            window.requestAnimationFrame(rendererLoop);
+          }
+        
+          function stopLoop() {
+            looping = false;
+          }
+          startLoop();
+        }
+    </script>
+
 </body>
 </html>
