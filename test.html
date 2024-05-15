@@ -439,7 +439,7 @@
         <p>
             <div style="display: inline-block;">
               <button class="show-number" style="cursor: pointer; position: relative; background-color: transparent;">My Cell Number</button>
-              <div class="number" style="display: none; position: absolute; justify-content: center; opacity: 0; transition: opacity 0.5s; color:rgb(72, 114, 228); font-size: 12px;">+1 (626) 354-4434</div>
+              <div class="number" style="display: none; position: absolute; justify-content: center; opacity: 0; transition: opacity 0.5s; color:rgb(75, 115, 230); font-size: 12px;">+1 (626) 354-4434</div>
             </div> | 
             <a href="mailto:farisalquaddoomi@gmail.com">My Email</a> | 
             <a href="https://www.linkedin.com/in/faris-alq/">My LinkedIn</a>
@@ -452,7 +452,7 @@
                 <polyline points="7 10,12 15,17 10" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
             </symbol>
         </svg>
-        <h1>Overview of My Existence</h1>
+        <h1>Timeline of my Experience</h1>
         <!-- TIMELINE -->
         <div id="timeline" class="timeline">
             <div class="btn-group">
@@ -468,13 +468,15 @@
                     </button>
                     <span class="timeline__dot"></span>
                     <span id="item1-name" class="timeline__meta">
-                        <time class="timeline__date" datetime="1970-01-01">January 1, 1970</time><br>
-                        <strong class="timeline__title">Unix Epoch</strong>
+                        <time class="timeline__date" datetime="1970-01-01">January 1, 1997</time><br>
+                        <strong class="timeline__title">Born into the world</strong>
                     </span>
                 </div>
                 <div class="timeline__item-body" id="item1-ctrld" role="region" aria-labelledby="item1" aria-hidden="true">
                     <div class="timeline__item-body-content">
-                        <p class="timeline__item-p">This is the day the Unix clock began (or <time datetime="1969-12-31">December 31, 1969</time> if you live behind UTC 😉).</p>
+                        <p class="timeline__item-p">
+                            <div class="clock" id="elapsed-time" style="color:rgb(75, 115, 230); font-family: system-ui; font-size: 15px;"></div>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -612,6 +614,30 @@
             }, 1000); // Matches the duration of the fade-out transition
           });
         });
+    </script>
+
+    <!-- Birth Clock -->
+    <script>
+        function updateElapsedTime() {
+          const startDate = new Date('1997-01-01T00:00:00');
+          const now = new Date();
+          const elapsed = now - startDate;
+    
+          const years = Math.floor(elapsed / (1000 * 60 * 60 * 24 * 365));
+          const days = Math.floor((elapsed % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+    
+          const clockElement = document.getElementById('elapsed-time');
+          clockElement.textContent = `${years} Years, ${days} Days, ${hours} Hours, ${minutes} Minutes, and ${seconds} Seconds`;
+        }
+    
+        // Update the clock every second
+        setInterval(updateElapsedTime, 1000);
+    
+        // Initial update
+        updateElapsedTime();
     </script>
 
     <!-- Night Mode -->
