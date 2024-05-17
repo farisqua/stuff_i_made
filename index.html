@@ -780,7 +780,7 @@
 
             scrollContainer.addEventListener('scroll', function () {
                 const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
-                if (scrollTop + clientHeight &gt;= scrollHeight - 5) {
+                if (scrollTop + clientHeight >= scrollHeight - 5) {
                     // Near the bottom of the scrollable container
                     loadMoreContent();
                 }
