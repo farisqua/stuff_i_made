@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
@@ -12,55 +12,77 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    
 
-    <title>Resume Al-Faris</title>
+    <title>Faris Stuff</title>
 
+    <!-- Tables and Content Formatting -->
     <style>
-
-        /* Tables and Content Formatting */
 
         html, body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            justify-content: center;
             align-items: center;
-            justify-content: flex-start;
             font-family: Arial, sans-serif;
-            line-height: 1.25;
-            min-height: 100vh;
         }
+
         body {
             padding-top: env(safe-area-inset-top);
             padding-bottom: env(safe-area-inset-bottom);
         }
+
         header {
-            margin-top: 10px;
             text-align: center;
             width: 100%;
+            padding-top: 1rem;
+            padding-bottom: 1px;
+            background-color: rgba(173, 173, 173, 0.1);
         }
-        table {
-            width: 60%;
-            margin: 20px 0;
-            border-collapse: collapse;
+
+        .scroll-container {
+            width: 100%;
+            height: 80%;
+            overflow-y: auto;
+            position: center;
+            scrollbar-width: none;
         }
-        th, td {
-            padding: 12px;
-            vertical-align: middle;
+
+    </style>
+
+    <!-- Nav Bar Formatting -->
+    <style>   
+
+        nav.navbar {
+            display: flex;
+            width: 100%;
+            font-size: 14px;
+            justify-content: space-between;
         }
-        tr:nth-child(even) {
-            background-color: rgb(245, 245, 245);
+
+        .navbar {
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(23, 23, 23, 0.1));
         }
-        tr:hover {
-            background-color: rgb(225, 245, 245);
+
+        .navbar-toggler {
+            border: none;
+            outline: none;
         }
-        th {
-            background-color: rgb(245, 245, 245);
-            color: white;
+
+        .navbar-toggler:hover {
+            border: none;
+            outline: none;
+            background-color: rgba(50,100,200,0.25);
         }
-        @media (max-width: 600px) {
+
+        .navbar-toggler:focus {
+            border: none;
+            outline: none;
+        }
+
+        @media (max-width: 100%) {
             body {
                 padding: 10px;
             }
@@ -68,50 +90,24 @@
                 margin-top: 5px;
                 padding: 0 5px;
             }
-            table {
-                width: 100%;
-            }
-            th, td {
-                padding: 8px;
-            }
-            th, td {
-                font-size: 0.9rem;
-            }
-        }
-        
-        /* Nav Bar Adjustments */
-
-        nav.navbar {
-            align-self: stretch;
-            width: 100%;
         }
 
         .navbar-nav {
             display: flex;
             align-items: center;
             width: 100%;
+            justify-content: center;
         }
 
-        /* Horizontal Line Adjustments */
+    </style>
 
-        hr {
-            width: 60%;
-            border: 1px solid #c6ccd6;
-            margin: 0px auto 5px auto;
-        }
-
-        @media (max-width: 600px) {
-            hr {
-                width: 100%;
-            }
-        }
-
-        /* Night Mode */
+    <!-- Night Mode Formatting -->
+    <style>
 
         :root {
             --bg-color-day: #fff;
             --text-color-day: #000;
-            --bg-color-night: #333;
+            --bg-color-night: #232323;
             --text-color-night: #fff;
         }
 
@@ -126,15 +122,10 @@
             color: var(--text-color-night);
         }
 
-        body.night-mode table tr:nth-child(even) {
-            background-color: #444;
-        }
+    </style>
 
-        body.night-mode table tr:hover {
-            background-color: #333;
-        }
-
-        /* Toggle Button */
+    <!-- Night Mode Toggle Button Formatting -->
+    <style>
 
         .checkbox-wrapper-2 .ikxBAC {
             appearance: none;
@@ -206,13 +197,220 @@
         }
 
     </style>
+
+    <!-- Night Mode Nav Bar Formatting -->
+    <style>
+        :root {
+            --toggler-icon-day: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+            --toggler-icon-night: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        .navbar-toggler-icon {
+            background-image: var(--toggler-icon-day);
+            transition: background-image 0.3s;
+        }
+
+        body.night-mode .navbar-toggler-icon {
+            background-image: var(--toggler-icon-night);
+        }
+
+        body.night-mode .navbar-toggler-icon {
+            border-color: #dfe1e4;
+        }
+
+        body.night-mode .navbar-nav .nav-link {
+            color: var(--text-color-night);
+        }
+
+        body.night-mode .navbar-nav .nav-link.active {
+            color: rgba(155,155,155);
+        }
+
+        body.night-mode .navbar-nav .nav-link:hover {
+            color: rgb(125,125,125);
+        }
+    </style>
+
+    <!-- Timeline Formatting -->
+    <style>
+        * {
+            border: 0;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --hue: 223,223,223;
+            --bg: hsl(var(--hue),90%,90%);
+            --fg: hsl(var(--hue),80%,10%);
+            --active-bg: hsl(220, 100%, 70%);
+            --primary: hsl(var(--hue),90%,50%);
+            --trans-dur: 0.3s;
+            --trans-timing: cubic-bezier(0.65,0,0.35,1);
+        }
+        a {
+            color: var(--primary);
+            transition: color var(--trans-dur);
+        }
+        body,
+        button {
+            color: var(--fg);
+            font: 1em/1.5 "IBM Plex Sans", sans-serif;
+            font-size: calc(14px + 2 * (65vw - 220px) / (2560 - 320));
+        }
+        body {
+            height: 100vh;
+            transition:
+                background-color var(--trans-dur),
+                color var(--trans-dur);
+        }
+        h1 {
+            font-size: 2em;
+            margin: 0 0 1rem;
+            text-align: center;
+        }
+        .btn {
+            background-color: var(--fg);
+            color: var(--bg);
+            cursor: pointer;
+            transition:
+                background-color calc(var(--trans-dur) / 2) linear,
+                color var(--trans-dur);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn:hover {
+            background-color: rgba(50,100,200,0.25)
+        }
+        .btn:active {
+            background-color: var(--active-bg);
+        }
+        .btn:focus {
+            box-shadow: none;
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+        .btn-group {
+            display: flex;
+            margin-bottom: 1.5em;
+        }
+        .timeline {
+            margin: auto;
+            padding: 0 1.5em;
+            width: 100%;
+            max-width: 36em;
+        }
+        .timeline__arrow {
+            background-color: transparent;
+            border-radius: 0.25em;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-inline-end: 0.25em;
+            outline: transparent;
+            width: 2em;
+            height: 2em;
+            transition:
+                background-color calc(var(--trans-dur) / 2) linear,
+                color var(--trans-dur);
+            -webkit-appearance: none;
+            appearance: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .timeline__arrow:focus-visible,
+        .timeline__arrow:hover {
+            background-color: hsl(var(--hue),10%,50%,0.4);
+        }
+        .timeline__arrow-icon {
+            display: block;
+            pointer-events: none;
+            transform: rotate(-90deg);
+            transition: transform var(--trans-dur) var(--trans-timing);
+            width: 100%;
+            height: auto;
+        }
+        .timeline__date {
+            font-size: 0.833em;
+            line-height: 2.4;
+        }
+        .timeline__dot {
+            background-color: currentColor;
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+            margin: 0.625em 0;
+            margin-inline-end: 1em;
+            position: relative;
+            width: 0.75em;
+            height: 0.75em;
+        }
+        .timeline__item {
+            position: relative;
+            padding-bottom: 2.25em;
+        }
+        .timeline__item:not(:last-child):before {
+            background-color: currentColor;
+            content: "";
+            display: block;
+            position: absolute;
+            top: 1em;
+            left: 2.625em;
+            width: 0.125em;
+            height: 100%;
+            transform: translateX(-50%);
+        }
+        [dir="rtl"] .timeline__arrow-icon {
+            transform: rotate(90deg);
+        }
+        [dir="rtl"] .timeline__item:not(:last-child):before {
+            right: 2.625em;
+            left: auto;
+            transform: translateX(50%);
+        }
+        .timeline__item-header {
+            display: flex;
+        }
+        .timeline__item-body {
+            border-radius: 0.375em;
+            overflow: hidden;
+            margin-top: 0.5em;
+            margin-inline-start: 4em;
+            height: 0;
+        }
+        .timeline__item-body-content {
+            background-color: hsl(var(--hue),10%,50%,0.2);
+            opacity: 0;
+            padding: 0.5em 0.75em;
+            visibility: hidden;
+            transition:
+                opacity var(--trans-dur) var(--trans-timing),
+                visibility var(--trans-dur) steps(1,end);
+        }
+        .timeline__meta {
+            width: 100%;
+        }
+        .timeline__title {
+            font-size: 1.5em;
+            line-height: 1.333;
+        }
+        /* Expanded state */
+        .timeline__item-body--expanded {
+            height: auto;
+        }
+        .timeline__item-body--expanded .timeline__item-body-content {
+            opacity: 1;
+            visibility: visible;
+            transition-delay: var(--trans-dur), 0s;
+        }
+        .timeline__arrow[aria-expanded="true"] .timeline__arrow-icon {
+            transform: rotate(0);
+        }
+        
+    </style>
     
 </head>
 
 <body>
 
     <!-- Nav Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -227,7 +425,7 @@
                 <!-- Night Mode Toggle -->
                 <div class="checkbox-wrapper-2 ml-auto"> <!-- ml-auto will push it to the right -->
                     <label for="night-mode-checkbox">
-                        <img src="day_night.png" alt="Night Mode" style="width: 50px; height: auto;">
+                        <img id="night-mode-icon" src="image_assets/day_night.png" alt="Night Mode" style="width: 50px; height: auto;">
                     </label>
                     <input type="checkbox" class="sc-gJwTLC ikxBAC" id="night-mode-checkbox">
                 </div>
@@ -237,327 +435,356 @@
 
     <!-- Resume Text Body -->
     <header>
-        <br>
         <h2>FARIS ALQUADDOOMI</h2>
-        <p>+1 626-354-4434 | <a href="mailto:farisalquaddoomi@gmail.com">My Email</a> | <a href="https://www.linkedin.com/in/faris-alq/">My LinkedIn</a></p>
-    </header>
-    <br>
-    <h4>EDUCATION</h4>
-    <hr>
-    <table>
-        <tbody>
-            <tr>
-                <td align="left" valign="top">
-                    <strong>Tufts University</strong><br>
-                    Master of Science in Mechanical Engineering<br>
-                    Master of Science in Innovation Management
-                </td>
-                <td align="right" valign="top">
-                    <strong>August 2020–May 2022</strong><br>
-                    GPA - 3.80/4.00
-                </td>
-            </tr>
-            <tr>
-                <td align="left" valign="top">
-                    <strong>University of Illinois at Urbana-Champaign</strong><br>
-                    Bachelor of Science in Mechanical Engineering<br>
-                    Minor: Geographic Information Science
-                </td>
-                <td align="right" valign="top">
-                    <strong>August 2015–May 2019</strong><br>
-                    GPA - 3.57/4.00
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <p>
+            <div style="display: inline-block;">
+              <button class="show-number" style="cursor: pointer; position: relative; background-color: transparent;">My Cell Number</button>
+              <div class="number" style="display: none; position: absolute; justify-content: center; opacity: 0; transition: opacity 0.5s; color:rgb(75, 115, 230); font-size: 12px;">+1 (626) 354-4434</div>
+            </div> | 
+            <a href="mailto:farisalquaddoomi@gmail.com">My Email</a> | 
+            <a href="https://www.linkedin.com/in/faris-alq/">My LinkedIn</a>
+        </p>
+    </header><br>
+    
+    <!-- Scroll container -->
+    <div class="scroll-container" id="scroll-container">
+        <svg display="none">
+            <symbol id="arrow">
+                <polyline points="7 10,12 15,17 10" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </symbol>
+        </svg>
+        <h1>Timeline of my Experience</h1>
+        <!-- TIMELINE -->
+        <div id="timeline" class="timeline">
+            <div class="btn-group">
+                <button class="btn" type="button" data-action="expand">Expand All</button>
+                <button class="btn" type="button" data-action="collapse">Collapse All</button>
+            </div>
+            <!-- Item 1 -->
+            <div class="timeline__item">
+                <div class="timeline__item-header">
+                    <button class="timeline__arrow" type="button" id="item1" aria-labelledby="item1-name" aria-expanded="false" aria-controls="item1-ctrld" aria-haspopup="true" data-item="1">
+                        <svg class="timeline__arrow-icon" viewBox="0 0 24 24" width="24px" height="24px">
+                            <use href="#arrow" />
+                        </svg>
+                    </button>
+                    <span class="timeline__dot"></span>
+                    <span id="item1-name" class="timeline__meta">
+                        <time class="timeline__date" datetime="1970-01-01">January 1, 1997</time><br>
+                        <strong class="timeline__title">Born into the world</strong>
+                    </span>
+                </div>
+                <div class="timeline__item-body" id="item1-ctrld" role="region" aria-labelledby="item1" aria-hidden="true">
+                    <div class="timeline__item-body-content">
+                        <p class="timeline__item-p">
+                            <div class="clock" id="elapsed-time" style="color:rgb(75, 115, 230); font-family: system-ui; font-size: 15px;"></div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="timeline__item">
+                <div class="timeline__item-header">
+                    <button class="timeline__arrow" type="button" id="item2" aria-labelledby="item2-name" aria-expanded="false" aria-controls="item2-ctrld" aria-haspopup="true" data-item="2">
+                        <svg class="timeline__arrow-icon" viewBox="0 0 24 24" width="24px" height="24px">
+                            <use href="#arrow" />
+                        </svg>
+                    </button>
+                    <span class="timeline__dot"></span>
+                    <span id="item2-name" class="timeline__meta">
+                        <time class="timeline__date" datetime="1973-10-17">August 2015 to May 2019</time><br>
+                        <strong class="timeline__title">Attended UIUC</strong>
+                    </span>
+                </div>
+                <div class="timeline__item-body" id="item2-ctrld" role="region" aria-labelledby="item2" aria-hidden="true">
+                    <div class="timeline__item-body-content">
+                        <p class="timeline__item-p">UIUC - University of Illinois at Urbana-Champaign, too long to write out every time</p>
+                        <p class="timeline__item-p">Got a Bachelor of Science in Mechanical Engineering and a minor in Geographic Information Science</p>
+                        <p class="timeline__item-p">My time here was great. I learned a lot from my peers and had a ton of invaluable life experiences. Some of my engineering work is detailed under the <a href="eng_sites.html" style="color:rgb(75, 115, 230)">Engineering Creations</a> link.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="timeline__item">
+                <div class="timeline__item-header">
+                    <button class="timeline__arrow" type="button" id="item3" aria-labelledby="item3-name" aria-expanded="false" aria-controls="item3-ctrld" aria-haspopup="true" data-item="3">
+                        <svg class="timeline__arrow-icon" viewBox="0 0 24 24" width="24px" height="24px">
+                            <use href="#arrow" />
+                        </svg>
+                    </button>
+                    <span class="timeline__dot"></span>
+                    <span id="item3-name" class="timeline__meta">
+                        <time class="timeline__date" datetime="2001-09-09">August 2020 to May 2022</time><br>
+                        <strong class="timeline__title">Attended Tufts University</strong>
+                    </span>
+                </div>
+                <div class="timeline__item-body" id="item3-ctrld" role="region" aria-labelledby="item3" aria-hidden="true">
+                    <div class="timeline__item-body-content">
+                        <p class="timeline__item-p">Got a Master of Science in "Innovation Management" the first year and a Master of Science in Mechanical Engineering the second year.</p>
+                        <p class="timeline__item-p">This was an unusual time to attend graduate school. Everything was remote due to the pandemic. My second year, I did some great work with a research lab there and I've included the details under <a href="eng_sites.html" style="color:rgb(75, 115, 230)">Engineering Creations</a> as well.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="timeline__item">
+                <div class="timeline__item-header">
+                    <button class="timeline__arrow" type="button" id="item4" aria-labelledby="item4-name" aria-expanded="false" aria-controls="item4-ctrld" aria-haspopup="true" data-item="4">
+                        <svg class="timeline__arrow-icon" viewBox="0 0 24 24" width="24px" height="24px">
+                            <use href="#arrow" />
+                        </svg>
+                    </button>
+                    <span class="timeline__dot"></span>
+                    <span id="item4-name" class="timeline__meta">
+                        <time class="timeline__date" datetime="2009-02-13">June 2022 to December 2022</time><br>
+                        <strong class="timeline__title">Tutored at C2 Education</strong>
+                    </span>
+                </div>
+                <div class="timeline__item-body" id="item4-ctrld" role="region" aria-labelledby="item4" aria-hidden="true">
+                    <div class="timeline__item-body-content">
+                        <p class="timeline__item-p">
+                            My first job after graduate school was at a humble tutoring center down the street from my parent's house.
+                            I had applied to engineering positions before this time networked with people extensively. 
+                            I got to final round interviews with two companies, but ... it ended up not working out because I did not have prior engineering experience.
+                            I honestly thought that was kind of an odd reason they gave, since the positions I applied to were all entry level.
+                        </p>
+                        <p class="timeline__item-p">
+                            Anyways, I started tutoring about two weeks after I got out of graduate school. I don't regret working there at all.
+                            It was a fascinating experience teaching kids from as young as 6 to as old as 19. Before this, I had only taught adults during my teaching assistant roles in university.
+                            I taught literally every subject, but I was the best at teaching math. My skills in teaching were really apparent there and they offered to make me the director at the center.
+                            Yet, I had other plans ... I just wanted to put my degrees to "good use" and felt it would be best if I practiced them in a more involved capacity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Item 5 -->
+            <div class="timeline__item">
+                <div class="timeline__item-header">
+                    <button class="timeline__arrow" type="button" id="item5" aria-labelledby="item5-name" aria-expanded="false" aria-controls="item5-ctrld" aria-haspopup="true" data-item="5">
+                        <svg class="timeline__arrow-icon" viewBox="0 0 24 24" width="24px" height="24px">
+                            <use href="#arrow" />
+                        </svg>
+                    </button>
+                    <span class="timeline__dot"></span>
+                    <span id="item5-name" class="timeline__meta">
+                        <time class="timeline__date" datetime="2033-05-18">April 2023 to Present</time><br>
+                        <strong class="timeline__title">Working at Zain Kuwait</strong>
+                    </span>
+                </div>
+                <div class="timeline__item-body" id="item5-ctrld" role="region" aria-labelledby="item5" aria-hidden="true">
+                    <div class="timeline__item-body-content">
+                        <p class="timeline__item-p">
+                            In December of 2022, I left my job at C2 to travel to Kuwait and stay with some of my brothers over there.
+                            I looked for work there and eventually landed up at Kuwait's first telecommunications company - Zain Kuwait.
+                            I was hired on as a Business Performance Analyst into a team that had recently been formed.
+                        </p>
+                        <p class="timeline__item-p">
+                            My experience at Zain has been pretty dynamic. I
+                            I've become self taught in PostgreSQL and became extremely proficient at using big data.
+                            I learned nuances in data engineering, visualization, and analytics.
+                            I succeeded in understanding the layout of the company's primary data warehouse.
+                            Many of my contributions are showcased in <a href="data_sites.html" style="color:rgb(75, 115, 230)">Data Creations</a> (note: I've substituted real data for mock data to ensure customer privacy).
+                        </p>
+                        <p class="timeline__item-p">
+                            Currently, I handle data requests sent to my team from clients across the entire marketing department and sometimes in other departments.
+                            These requests typically consist of writing queries, visualizing data, providing analyses, providing historical insights, noting trends, and provisioning cleaned and aggregated datasets.
+                            Lately, I've been composing a revamp of the organizational structure of my team so that it can eventually handle KPI-tracking efforts across the department.
+                        </p>
+                        <p class="timeline__item-p">
+                            I plan to leave this position at the end of April 2024 to pursue work in California. 
+                            I came here to do some important personal things and I have accomplished them all. 
+                            Now, I intend to return to California and build a career there.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <h4>TECHNICAL SKILLS</h4>
-    <hr>
-    <table>
-        <tr>
-            <td><strong>Data Tools</strong></td>
-            <td>
-                <em>Data Analytics</em>: PostgreSQL, Python, Data Analysis Expressions (DAX)<br>
-                <em>Data Visualization</em>: Seaborn, Plotly, Matplotlib, PowerBI, Think-cell, Visio<br>
-                <em>Data Science</em>: Sci-kit Learn, Pandas, NumPy<br>
-                <em>Databasing</em>: pgAdmin<br>
-                <em>General Programming</em>: HTML, CSS, Git<br>
-                <em>MS Office Suite</em>: Excel, Word, PowerPoint
-            </td>
-        </tr>
-        <tr>
-            <td><strong>Engineering Tools</strong></td>
-            <td>
-                <em>Design Tools</em>: PTC Creo Parametric, SolidWorks<br>
-                <em>Analysis Tools</em>: MATLAB, ANSYS<br>
-                <em>Design Skills</em>: Engineering Drawings, Rapid Prototyping, 3D Printing, Laser Cutting, Part Procurement
-            </td>
-        </tr>
-        <tr>
-            <td><strong>Finance Skills</strong></td>
-            <td>
-                Financial Modeling, Data Analysis, Technical Analysis, Fundamental Analysis, Market Analysis and Benchmarking, Financial Management, Options Trading
-            </td>
-        </tr>
-    </table>
+    <!-- Number Popup -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const button = document.querySelector('.show-number');
+          const number = document.querySelector('.number');
+    
+          button.addEventListener('mouseover', () => {
+            number.style.display = 'block';
+            setTimeout(() => {
+              number.style.opacity = '1';
+            }, 10); // Slight delay to trigger transition
+          });
+    
+          button.addEventListener('mouseout', () => {
+            number.style.opacity = '0';
+            setTimeout(() => {
+              if (!button.matches(':hover') && !number.matches(':hover')) {
+                number.style.display = 'none';
+              }
+            }, 1000); // Matches the duration of the fade-out transition
+          });
+    
+          number.addEventListener('mouseover', () => {
+            number.style.opacity = '1';
+            number.style.display = 'block';
+          });
+    
+          number.addEventListener('mouseout', () => {
+            number.style.opacity = '0';
+            setTimeout(() => {
+              if (!button.matches(':hover') && !number.matches(':hover')) {
+                number.style.display = 'none';
+              }
+            }, 1000); // Matches the duration of the fade-out transition
+          });
+        });
+    </script>
 
-    <h4>RESEARCH EXPERIENCE</h4>
-    <hr>
-    <table>
-        <tbody>
-            <tr>
-                <td align="left" valign="top">
-                    <strong>Superconductivity Lab - Tufts University</strong><br>
-                    Research Assistant
-                </td>
-                <td align="right" valign="top">
-                    <strong>June 2021–May 2022</strong><br>
-                    Somerville, MA
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ul>
-                        <li>Charged with the design, development, and construction of a cryogenic probe for investigating the possibility of quench detection using acoustic sensors</li>
-                        <li>Tasked with post-processing of datasets generated by Finite Element Analysis models of superconducting cables under varying mechanical loads</li>
-                        <li>Documented experiments and created instructional material for new lab members and trained lab members in proper methods for conducting experiments</li>
-                        <li>Published research: "Acoustic Sensor Development for Quench Detection in HTS Conductors," IEEE Transactions on Applied Superconductivity, DOI: 10.1109/TASC.2023.3251941.</li>
-                    </ul>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h4>WORK EXPERIENCE</h4>
-    <hr>
-    <table>
-        <tbody>
-            <!-- Job 1 -->
-            <tr>
-                <td align="left" valign="top">
-                    <strong>Zain Kuwait - Marketing Department</strong><br>
-                    Business Performance Analyst
-                </td>
-                <td align="right" valign="top">
-                    <strong>April 2023 - Present</strong><br>
-                    Shuwaikh, Kuwait
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ul>
-                        <li>Performed internal queries for clients across multiple teams at Zain using PostgreSQL</li>
-                        <li>Organized, prepared, analyzed, and visualized data for report generation using PostgreSQL, Python, Excel, PowerBI, PowerPoint, Visio, and Think-cell</li>
-                        <li>Designed and implemented projects to produce marketing insights and provide long-term value for analytics</li>
-                        <li>Collaborated with third-party vendors to align their services with our organizational objectives</li>
-                    </ul>
-                </td>
-            </tr>
-            <!-- Job 2 -->
-            <tr>
-                <td align="left" valign="top">
-                    <strong>C2 Education</strong><br>
-                    Teacher
-                </td>
-                <td align="right" valign="top">
-                    <strong>June 2022 - Dec 2022</strong><br>
-                    Pasadena, CA
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ul>
-                        <li>Instructed students in a 1:1, up-to a 3:1, setting. Instruction consisted of teaching general math, English, and science skills as well as test preparation</li>
-                        <li>Provided academic counseling to students entering high school and college – created study plans with students to improve their academic performance and achieve desired outcomes</li>
-                        <li>Recorded student progress and performance in C2’s online database; corresponded with staff to tailor curriculum to student needs</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td align="left" valign="top">
-                    Education Coordinator<br>
-                </td>
-                <td align="right" valign="top">
-                    <strong>October 2022 - November 2022</strong><br>
-                    Pasadena, CA
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ul>
-                        <li>Funneling leads to proper sales channels</li>
-                        <li>Recording student attendance</li>
-                        <li>Adjusting student schedules</li>
-                        <li>Administering student diagnostic tests and assessing progress</li>
-                        <li>Ensuring the safety and security of all business premises and inventory</li>
-                        <li>Replenishing inventory per teacher and client requests or by discretion</li>
-                    </ul>
-                </td>
-            </tr>
-            <!-- Job 3 -->
-            <tr>
-                <td align="left" valign="top">
-                    <strong>Tufts Technology Services</strong><br>
-                    Audio Visual Support Technician
-                </td>
-                <td align="right" valign="top">
-                    <strong>August 2020 - May 2022</strong><br>
-                    Somerville, MA
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ul>
-                        <li>Provided on-site technical support for Tufts faculty and staff and ensured that audio-visual equipment was functional to support remote learning through Zoom and echo360</li>
-                        <li>Partnered with TTS technicians to install audio visual equipment and fulfill troubleshooting requests</li>
-                        <li>Performed in-class troubleshooting requests from teachers and staff to support class activities utilizing university resources such as document cameras, projectors, and room audio-visual control panels</li>
-                        <li>Provided live sound for dance, song, and musical performances and other showcases</li>
-                    </ul>
-                </td>
-            </tr>
-            <!-- Job 4 -->
-            <tr>
-                <td align="left" valign="top">
-                    <strong>University of Illinois - Administrative Information Technology Services</strong><br>
-                    Technical Service Representative
-                </td>
-                <td align="right" valign="top">
-                    <strong>August 2020 - May 2022</strong><br>
-                    Somerville, MA
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ul>
-                        <li>Provided on-site technical support for Tufts faculty and staff and ensured that audio-visual equipment was functional to support remote learning through Zoom and echo360</li>
-                        <li>Partnered with TTS technicians to install audio visual equipment and fulfill troubleshooting requests</li>
-                        <li>Performed in-class troubleshooting requests from teachers and staff to support class activities utilizing university resources such as document cameras, projectors, and room audio-visual control panels</li>
-                        <li>Provided live sound for dance, song, and musical performances and other showcases</li>
-                    </ul>
-                </td>
-            </tr>  
-        </tbody>
-    </table>
-
-    <h4>TEACHING EXPERIENCE</h4>
-    <hr>
-    <table>
-        <tbody>
-            <!-- Job 1 -->
-            <tr>
-                <td align="left" valign="top">
-                    <strong>Tutor</strong><br>
-                    Freelance
-                </td>
-                <td align="right" valign="top">
-                    <strong>April 2022 - Present</strong><br>
-                    Remote and In-Person
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ul>
-                        <li>Freelance tutor in Mathematics (pre-algebra to AP Calculus BC)</li>
-                    </ul>
-                </td>
-            </tr>
-            <!-- Job 2 -->
-            <tr>
-                <td align="left" valign="top">
-                    <strong>Tufts University</strong><br>
-                    Course Assistant: Data Science for Sustainability
-                </td>
-                <td align="right" valign="top">
-                    <strong>September 2022 - December 2022</strong><br>
-                    Remote
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ul>
-                        <li>Provide grades and feedback on class assignments and projects</li>
-                        <li>Provided office hours for students to troubleshoot project code</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td align="left" valign="top">
-                    Course Instructor: Building Financial Intelligence<br>
-                    Teaching Assistant: Finance and Accounting
-                </td>
-                <td align="right" valign="top">
-                    <strong>September 2021 - December 2021</strong><br>
-                    Somerville, MA
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <ul>
-                        <li>Responsible for offering weekly recitations, responding to questions from students, and grading homework</li>
-                        <li>Provided lectures and project advising in recitations</li>
-                    </ul>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h4>PROJECT EXPERIENCE</h4>
-    <hr>
-    <table>
-        <tbody>
-            <tr>
-                <td align="left" valign="top">
-                    <strong>Spectral Key</strong><br/>
-                </td>
-                <td align="right" valign="top">
-                    <strong>December 2021-May 2022</strong><br/>
-                    Somerville, MA
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Partnered with Tufts REAP labs to develop an application for thermophotovoltaics (TPVs) in waste heat recovery. Identified multiple customer subsegments for TPVs, with landfill gas flares as the final focus.
-                    <ul>
-                        <li>Identified areas of high heat losses in cement, metal casting, and glass manufacturing. Discovered a use-case for TPVs in float glass lines that fits the temperature range of TPV maximum power efficiency and calculated the market opportunity.</li>
-                        <li>Interviewed people in the glass industry to identify their unmet needs and develop our problem statement to influence the design of our waste heat recovery system.</li>
-                    </ul>
-                    <strong>NSF I-Corps:</strong> Completed I-Corps Spark and Fusion programs with MIT and Tufts
-                </td>
-            </tr>
-            <tr>
-                <td align="left" valign="top">
-                    <strong>Mobius Health</strong><br/>
-                </td>
-                <td align="right" valign="top">
-                    <strong>August 2020-December 2021</strong><br/>
-                    Somerville, MA
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    Developed a wearable technology company: Mobius Health. Constructed a business plan, including comprehensive marketing plans, financial projections, and product development roadmaps.
-                    <ul>
-                        <li>Conducted customer research, interviews, and landscape assessments to identify customer needs, competitors, and determine product fit, our competitive advantage, and our differentiating factors.</li>
-                        <li>Developed a minimum viable product to validate our Tufts-patented technology.</li>
-                        <li>Constructed a set of financial pro forma. Developed additional financial analyses supporting the feasibility of our business plan.</li>
-                    </ul>
-                    <strong>Tufts Ideas Competition:</strong> Won audience favorite for our Mobius Health venture pitch
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
+    <!-- Birth Clock -->
+    <script>
+        function updateElapsedTime() {
+          const startDate = new Date('1997-01-01T00:00:00');
+          const now = new Date();
+          const elapsed = now - startDate;
+    
+          const years = Math.floor(elapsed / (1000 * 60 * 60 * 24 * 365));
+          const days = Math.floor((elapsed % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+    
+          const clockElement = document.getElementById('elapsed-time');
+          clockElement.textContent = `${years} Years, ${days} Days, ${hours} Hours, ${minutes} Minutes, and ${seconds} Seconds`;
+        }
+    
+        // Update the clock every second
+        setInterval(updateElapsedTime, 1000);
+    
+        // Initial update
+        updateElapsedTime();
+    </script>
 
     <!-- Night Mode -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const nightModeCheckbox = document.getElementById('night-mode-checkbox');
-
+            const nightModeIcon = document.querySelector('.checkbox-wrapper-2 img');
+    
+            const updateIcon = () => {
+                if (nightModeCheckbox.checked) {
+                    nightModeIcon.src = 'image_assets/night_day.png';
+                } else {
+                    nightModeIcon.src = 'image_assets/day_night.png';
+                }
+            };
+    
             nightModeCheckbox.addEventListener('change', () => {
                 document.body.classList.toggle('night-mode', nightModeCheckbox.checked);
+                updateIcon();
+            });
+    
+            // Check local storage for night mode setting
+            if (localStorage.getItem('nightMode') === 'true') {
+                nightModeCheckbox.checked = true;
+                document.body.classList.add('night-mode');
+            }
+    
+            updateIcon();
+    
+            nightModeCheckbox.addEventListener('change', () => {
+                document.body.classList.toggle('night-mode', nightModeCheckbox.checked);
+                localStorage.setItem('nightMode', nightModeCheckbox.checked);
+                updateIcon();
             });
         });
     </script>
+
+    <!-- Timeline -->
+    <script>
+    window.addEventListener("DOMContentLoaded",() => {
+        const ctl = new CollapsibleTimeline("#timeline");
+    });
     
+    class CollapsibleTimeline {
+        constructor(el) {
+            this.el = document.querySelector(el);
+    
+            this.init();
+        }
+        init() {
+            this.el?.addEventListener("click",this.itemAction.bind(this));
+        }
+        animateItemAction(button,ctrld,contentHeight,shouldCollapse) {
+            const expandedClass = "timeline__item-body--expanded";
+            const animOptions = {
+                duration: 300,
+                easing: "cubic-bezier(0.65,0,0.35,1)"
+            };
+    
+            if (shouldCollapse) {
+                button.ariaExpanded = "false";
+                ctrld.ariaHidden = "true";
+                ctrld.classList.remove(expandedClass);
+                animOptions.duration *= 2;
+                this.animation = ctrld.animate([
+                    { height: `${contentHeight}px` },
+                    { height: `${contentHeight}px` },
+                    { height: "0px" }
+                ],animOptions);
+            } else {
+                button.ariaExpanded = "true";
+                ctrld.ariaHidden = "false";
+                ctrld.classList.add(expandedClass);
+                this.animation = ctrld.animate([
+                    { height: "0px" },
+                    { height: `${contentHeight}px` }
+                ],animOptions);
+            }
+        }
+        itemAction(e) {
+            const { target } = e;
+            const action = target?.getAttribute("data-action");
+            const item = target?.getAttribute("data-item");
+    
+            if (action) {
+                const targetExpanded = action === "expand" ? "false" : "true";
+                const buttons = Array.from(this.el?.querySelectorAll(`[aria-expanded="${targetExpanded}"]`));
+                const wasExpanded = action === "collapse";
+    
+                for (let button of buttons) {
+                    const buttonID = button.getAttribute("data-item");
+                    const ctrld = this.el?.querySelector(`#item${buttonID}-ctrld`);
+                    const contentHeight = ctrld.firstElementChild?.offsetHeight;
+    
+                    this.animateItemAction(button,ctrld,contentHeight,wasExpanded);
+                }
+    
+            } else if (item) {
+                const button = this.el?.querySelector(`[data-item="${item}"]`);
+                const expanded = button?.getAttribute("aria-expanded");
+    
+                if (!expanded) return;
+    
+                const wasExpanded = expanded === "true";
+                const ctrld = this.el?.querySelector(`#item${item}-ctrld`);
+                const contentHeight = ctrld.firstElementChild?.offsetHeight;
+    
+                this.animateItemAction(button,ctrld,contentHeight,wasExpanded);
+            }
+        }
+    }
+    </script>
+
+    <!-- Scroll Container -->
+    <script>
+        const scrollContainer = document.getElementById('scroll-container');
+
+        scrollContainer.addEventListener('scroll', function () {
+            const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
+            if (scrollTop + clientHeight >= scrollHeight - 5) {
+                // Near the bottom of the scrollable container
+                loadMoreContent();
+            }
+        });
+    </script>
+
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
@@ -12,30 +12,86 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+    
 
-    <title>Resume Al-Faris</title>
+    <title>Faris Stuff</title>
 
+    <!-- Tables and Content Formatting -->
     <style>
 
-        /* Nav Bar Adjustments */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+    </style>
+
+    <!-- Nav Bar Formatting -->
+    <style>   
 
         nav.navbar {
-            align-self: stretch;
+            display: flex;
             width: 100%;
+            font-size: 14px;
+            justify-content: space-between;
+        }
+
+        .navbar {
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(23, 23, 23, 0.1));
+        }
+
+        .navbar-toggler {
+            border: none;
+            outline: none;
+        }
+
+        .navbar-toggler:hover {
+            border: none;
+            outline: none;
+            background-color: rgba(50,100,200,0.25);
+        }
+
+        .navbar-toggler:focus {
+            border: none;
+            outline: none;
+        }
+
+        @media (max-width: 100%) {
+            body {
+                padding: 10px;
+            }
+            header {
+                margin-top: 5px;
+                padding: 0 5px;
+            }
         }
 
         .navbar-nav {
             display: flex;
             align-items: center;
             width: 100%;
+            justify-content: center;
         }
 
-        /* Night Mode */
+    </style>
+
+    <!-- Night Mode Formatting -->
+    <style>
 
         :root {
             --bg-color-day: #fff;
             --text-color-day: #000;
-            --bg-color-night: #333;
+            --bg-color-night: #232323;
             --text-color-night: #fff;
         }
 
@@ -50,7 +106,10 @@
             color: var(--text-color-night);
         }
 
-        /* Toggle Button */
+    </style>
+
+    <!-- Night Mode Toggle Button Formatting -->
+    <style>
 
         .checkbox-wrapper-2 .ikxBAC {
             appearance: none;
@@ -122,28 +181,61 @@
         }
 
     </style>
+
+    <!-- Night Mode Nav Bar Formatting -->
+    <style>
+        :root {
+            --toggler-icon-day: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+            --toggler-icon-night: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        .navbar-toggler-icon {
+            background-image: var(--toggler-icon-day);
+            transition: background-image 0.3s;
+        }
+
+        body.night-mode .navbar-toggler-icon {
+            background-image: var(--toggler-icon-night);
+        }
+
+        body.night-mode .navbar-toggler-icon {
+            border-color: #dfe1e4;
+        }
+
+        body.night-mode .navbar-nav .nav-link {
+            color: var(--text-color-night);
+        }
+
+        body.night-mode .navbar-nav .nav-link.active {
+            color: rgba(155,155,155);
+        }
+
+        body.night-mode .navbar-nav .nav-link:hover {
+            color: rgb(125,125,125);
+        }
+    </style>
     
 </head>
 
 <body>
 
     <!-- Nav Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="index.html">Resume
+                    <a class="nav-item nav-link" href="index.html">Resume<span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="eng_sites.html">Engineering Creations</a>
-                    <a class="nav-item nav-link active" href="data_sites.html">Data Creations</a><span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link active" href="data_sites.html">Data Creations</a>
                     <a class="nav-item nav-link" href="cool_sites.html">Interesting Links</a>
                 </div>
                 <!-- Night Mode Toggle -->
                 <div class="checkbox-wrapper-2 ml-auto"> <!-- ml-auto will push it to the right -->
                     <label for="night-mode-checkbox">
-                        <img src="day_night.png" alt="Night Mode" style="width: 50px; height: auto;">
+                        <img id="night-mode-icon" src="image_assets/day_night.png" alt="Night Mode" style="width: 50px; height: auto;">
                     </label>
                     <input type="checkbox" class="sc-gJwTLC ikxBAC" id="night-mode-checkbox">
                 </div>
@@ -151,19 +243,40 @@
         </div>
     </nav>    
 
-    <!-- Text Body -->
-    <h4> ~Processing data~ <3 </h4>
-
     <!-- Night Mode -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const nightModeCheckbox = document.getElementById('night-mode-checkbox');
-
+            const nightModeIcon = document.querySelector('.checkbox-wrapper-2 img');
+    
+            const updateIcon = () => {
+                if (nightModeCheckbox.checked) {
+                    nightModeIcon.src = 'image_assets/night_day.png';
+                } else {
+                    nightModeIcon.src = 'image_assets/day_night.png';
+                }
+            };
+    
             nightModeCheckbox.addEventListener('change', () => {
                 document.body.classList.toggle('night-mode', nightModeCheckbox.checked);
+                updateIcon();
+            });
+    
+            // Check local storage for night mode setting
+            if (localStorage.getItem('nightMode') === 'true') {
+                nightModeCheckbox.checked = true;
+                document.body.classList.add('night-mode');
+            }
+    
+            updateIcon();
+    
+            nightModeCheckbox.addEventListener('change', () => {
+                document.body.classList.toggle('night-mode', nightModeCheckbox.checked);
+                localStorage.setItem('nightMode', nightModeCheckbox.checked);
+                updateIcon();
             });
         });
     </script>
-    
+
 </body>
 </html>
